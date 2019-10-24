@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import publications from './database/publications.json';
+import Reader from './components/Reader';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <Reader items={publications} />,
+  document.getElementById('root'),
+);
