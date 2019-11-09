@@ -18,26 +18,45 @@ class Reader extends Component {
 
   state = {
     page: 1,
+    disabledPrev: true,
+    disabledNext: false,
   };
 
   prevPage = () => {
-    this.state.page > 1
-      ? this.setState(state => ({ page: state.page - 1 }))
-      : this.setState(state => ({ page: this.props.items.length }));
+    if (this.state.page > 1) {
+      this.setState(state => ({
+        page: state.page - 1,
+        disabledNext: false,
+      }));
+    }
+    if (this.state.page <= 2) {
+      this.setState({ disabledPrev: true });
+    }
   };
 
   nextPage = () => {
-    this.state.page < this.props.items.length
-      ? this.setState(state => ({ page: state.page + 1 }))
-      : this.setState(state => ({ page: 1 }));
+    if (this.state.page < this.props.items.length) {
+      this.setState(state => ({
+        page: state.page + 1,
+        disabledPrev: false,
+      }));
+    }
+    if (this.state.page >= this.props.items.length - 1) {
+      this.setState({ disabledNext: true });
+    }
   };
 
   render() {
-    const { page } = this.state;
+    const { page, disabledPrev, disabledNext } = this.state;
     const { items } = this.props;
     return (
       <div class={styles.reader}>
-        <Controls prevPage={this.prevPage} nextPage={this.nextPage} />
+        <Controls
+          prevPage={this.prevPage}
+          nextPage={this.nextPage}
+          disabledPrev={disabledPrev}
+          disabledNext={disabledNext}
+        />
         <Counter currentPage={page} pagesQuantity={items.length} />
         <Publication page={page} publications={items} />
       </div>

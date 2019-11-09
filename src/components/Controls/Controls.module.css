@@ -29,3 +29,13 @@
 .button:focus {
   background-color: #1f65d6;
 }
+
+.disabledButton {
+  composes: button;
+  background-color: #babcc0;
+}
+
+.disabledButton:hover,
+.disabledButton:focus {
+  background-color: #babcc0;
+}
