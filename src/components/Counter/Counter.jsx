@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './Counter.module.css';
 
-const Counter = ({ currentPage, pagesQuantity }) => (
-  <p class={styles.counter}>
-    {currentPage}/{pagesQuantity}
+const Counter = ({ currentPage, lastPage }) => (
+  <p className={styles.counter}>
+    {currentPage}/{lastPage}
   </p>
 );
 

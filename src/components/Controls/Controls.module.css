@@ -30,12 +30,6 @@
   background-color: #1f65d6;
 }
 
-.disabledButton {
-  composes: button;
-  background-color: #babcc0;
-}
-
-.disabledButton:hover,
-.disabledButton:focus {
+.button[disabled] {
   background-color: #babcc0;
 }
