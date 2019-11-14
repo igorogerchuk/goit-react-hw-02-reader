@@ -20,16 +20,10 @@ class Reader extends Component {
     page: 1,
   };
 
-  prevPage = () => {
-    if (this.state.page > 1) {
-      this.setState(state => ({ page: state.page - 1 }));
-    }
-  };
-
-  nextPage = () => {
-    if (this.state.page < this.props.items.length) {
-      this.setState(state => ({ page: state.page + 1 }));
-    }
+  changePage = ({ target: { innerText: buttonName } }) => {
+    this.setState(state => ({
+      page: buttonName === 'Вперед' ? state.page + 1 : state.page - 1,
+    }));
   };
 
   render() {
@@ -38,8 +32,7 @@ class Reader extends Component {
     return (
       <div className={styles.reader}>
         <Controls
-          prevPage={this.prevPage}
-          nextPage={this.nextPage}
+          changePage={this.changePage}
           currentPage={page}
           lastPage={items.length}
         />

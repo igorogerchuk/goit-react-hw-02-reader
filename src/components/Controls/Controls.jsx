@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './Controls.module.css';
 
-const Controls = ({ prevPage, nextPage, currentPage, lastPage }) => (
+const Controls = ({ changePage, currentPage, lastPage }) => (
   <section className={styles.controls}>
     <button
       type="button"
       className={styles.button}
-      onClick={prevPage}
+      onClick={changePage}
       disabled={currentPage === 1}
     >
       Назад
@@ -14,7 +14,7 @@ const Controls = ({ prevPage, nextPage, currentPage, lastPage }) => (
     <button
       type="button"
       className={styles.button}
-      onClick={nextPage}
+      onClick={changePage}
       disabled={currentPage === lastPage}
     >
       Вперед
